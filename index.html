@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Management System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>Student Management System</h1>
+      <p>Manage student records easily</p>
+    </div>
+    <button class="primary" onclick="openModal()">+ Add Student</button>
+  </header>
+
+  <main class="container">
+    <section class="stats">
+      <div class="card"><span>Total Students</span><strong id="totalStudents">0</strong></div>
+      <div class="card"><span>Average Marks</span><strong id="avgMarks">0%</strong></div>
+      <div class="card"><span>Top Performer</span><strong id="topStudent">-</strong></div>
+    </section>
+
+    <section class="panel">
+      <div class="toolbar">
+        <input id="search" type="search" placeholder="Search by name, roll number or course...">
+        <select id="courseFilter">
+          <option value="all">All Courses</option>
+          <option>B.Tech</option>
+          <option>BCA</option>
+          <option>B.Sc</option>
+          <option>MCA</option>
+          <option>MBA</option>
+        </select>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Roll No.</th><th>Name</th><th>Course</th><th>Year</th>
+              <th>Marks</th><th>Phone</th><th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="studentTable"></tbody>
+        </table>
+        <div id="empty" class="empty">No students found.</div>
+      </div>
+    </section>
+  </main>
+
+  <div id="modal" class="modal">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h2 id="modalTitle">Add Student</h2>
+        <button class="close" onclick="closeModal()">×</button>
+      </div>
+      <form id="studentForm">
+        <input type="hidden" id="editIndex">
+        <div class="grid">
+          <label>Roll Number<input id="roll" required></label>
+          <label>Student Name<input id="name" required></label>
+          <label>Course
+            <select id="course" required>
+              <option value="">Select course</option><option>B.Tech</option><option>BCA</option>
+              <option>B.Sc</option><option>MCA</option><option>MBA</option>
+            </select>
+          </label>
+          <label>Year
+            <select id="year" required><option value="">Select year</option>
+              <option>1st Year</option><option>2nd Year</option><option>3rd Year</option><option>4th Year</option>
+            </select>
+          </label>
+          <label>Marks (%)<input id="marks" type="number" min="0" max="100" required></label>
+          <label>Phone<input id="phone" type="tel" required></label>
+        </div>
+        <div class="form-actions">
+          <button type="button" class="secondary" onclick="closeModal()">Cancel</button>
+          <button type="submit" class="primary">Save Student</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
